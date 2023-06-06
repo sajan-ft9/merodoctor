@@ -1,0 +1,25 @@
+section {
+    background: linear-gradient(to right, #35AF96, #78BDB5)
+}
+
+.header_section{
+    background: linear-gradient(to right, #35AF96, #78BDB5);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.shadow {
+    background: transparent;
+    font-size: large;
+    color: aliceblue;
+    box-shadow: 8px 4px 8px 8px rgba(0, 0, 0, 0.2), 8px 6px 20px 8px rgba(0, 0, 0, 0.19);
+}
+.footer_section {
+
+    background: linear-gradient(to right, #35AF96, #78BDB5);
+    box-shadow: 8px 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+}
+.doctors:hover{
+    scale: 1.1;
+    transition: 1s ease-in-out;
+    box-shadow: 8px 4px 8px 8px rgba(0, 0, 0, 0.2), 8px 6px 20px 8px rgba(0, 0, 0, 0.19);
+}
