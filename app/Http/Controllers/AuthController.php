@@ -105,30 +105,23 @@ class AuthController extends Controller
 
         $doctor = User::with('doctors')->where('email', $request->email)->first();
 
-        if ($doctor->role_id == 2) {
-            if ($doctor->doctors->is_verified == 1) {
-
-                if (Auth::attempt($formFields)) {
-                    if (Auth::user()->role_id == 2) {
-                        $request->session()->regenerate();
-                        return redirect(route('doctor.dashboard'));
-                    }
-                } else {
-                    return back()->withErrors([
-                        'email' => 'Credentials do not match our records'
-                    ]);
-                }
-            } else {
-                return redirect()->back()->withErrors(["account" => "Your account is not approved yet!"]);
-            }
-        }
-
         if (Auth::attempt($formFields)) {
             if (Auth::user()->role_id == 1) {
 
                 $request->session()->regenerate();
                 return redirect(route('admin.dashboard'));
-            } elseif (Auth::user()->role_id == 3) {
+            }
+            elseif(Auth::user()->role_id == 2) {
+                if($doctor->doctors->is_verified == 1){
+                    $request->session()->regenerate();
+                    return redirect(route('doctor.dashboard'));
+                }
+                else{
+                    Auth::logout();
+                    return redirect()->back()->withErrors(["account" => "Your account is not approved yet!"]);
+                }
+            }
+            elseif (Auth::user()->role_id == 3) {
 
                 $request->session()->regenerate();
 
