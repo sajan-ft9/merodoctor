@@ -16,8 +16,8 @@
                 <tr>
                     <th>Date</th>
                     <th>Time Slot</th>
-                    <th>Doctor</th>
-                    <th>Department</th>
+                    <th>Patient</th>
+                    <th>Phone</th>
                     <th>Description</th>
                     <th>Status</th>
                 </tr>
@@ -28,8 +28,8 @@
                 <tr>
                     <td>{{ $item->date_bs }}</td>
                     <td>{{ $item->time_slot }}</td>
-                    <td>{{ $item->doctor_name }}</td>
-                    <td>{{ $item->doctor->department }}</td>
+                    <td>{{ $item->patient->user->name }}</td>
+                    <td>{{ $item->patient->phone }}</td>
                     <td>{{ $item->problem_desc }}</td>
 
                     @if ($item->status == 1)

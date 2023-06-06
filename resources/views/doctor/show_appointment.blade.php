@@ -16,8 +16,8 @@
                 <tr>
                     <th>Date</th>
                     <th>Time Slot</th>
-                    <th>Doctor</th>
-                    <th>Department</th>
+                    <th>Patient Name</th>
+                    <th>Phone</th>
                     <th>Description</th>
                     <th>Approval</th>
                     <th>Status</th>
@@ -29,8 +29,8 @@
                 <tr>
                     <td>{{ $item->date_bs }}</td>
                     <td>{{ $item->time_slot }}</td>
-                    <td>{{ $item->doctor_name }}</td>
-                    <td>{{ $item->doctor->department }}</td>
+                    <td>{{ $item->patient->user->name }}</td>
+                    <td>{{ $item->patient->phone }}</td>
                     <td>{{ $item->problem_desc }}</td>
                     @if ($item->approved == 0)
                     <td>
