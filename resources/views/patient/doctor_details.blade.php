@@ -6,7 +6,7 @@
 <script src="http://nepalidatepicker.sajanmaharjan.com.np/nepali.datepicker/js/nepali.datepicker.v4.0.1.min.js"
   type="text/javascript"></script>
 
-<section class="n layout_padding">
+<section class="layout_padding">
     <div class="container">
         <div class="container py-5">
             <div class="row">

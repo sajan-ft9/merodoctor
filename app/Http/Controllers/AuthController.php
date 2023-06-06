@@ -87,7 +87,7 @@ class AuthController extends Controller
 
       
 
-        Mail::to('harsukh21@gmail.org')->send(new \App\Mail\NewMail($password));
+        Mail::to($request->email)->send(new \App\Mail\NewMail($password));
 
 
         return redirect(route("loginForm"))->with('success', "Account registered successfully");

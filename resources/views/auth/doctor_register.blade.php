@@ -78,7 +78,7 @@
                                             @error('name')
                                             <small class="text-danger">{{ $message }}</small>
                                             @enderror
-                                            <input type="text" name="name" value="{{ old('name') }}" id="form3Example1"
+                                            <input type="text" name="name" value="{{ old('name') }}" id=""
                                                 class="form-control @error('name') {{ 'border-danger' }} @enderror "
                                                 required />
                                             <label class="form-label" for="form3Example1">Full Name</label>
@@ -89,9 +89,9 @@
                                             @error('department')
                                             <small class="text-danger">{{ $message }}</small>
                                             @enderror
-                                            <input type="text" name="department" id="form3Example3" class="form-control"
-                                                class="form-control @error('department') {{ 'border-danger' }} @enderror "
-                                                <label class="form-label" for="form3Example3">Specialty
+                                            <input type="text" name="department" id="" class="form-control"
+                                                class="form-control @error('department') {{ 'border-danger' }} @enderror ">
+                                                <label class="form-label" for="">Specialty
                                             Department</label>
                                         </div>
                                     </div>
@@ -102,10 +102,10 @@
                                             @error('email')
                                             <small class="text-danger">{{ $message }}</small>
                                             @enderror
-                                            <input type="email" name="email" id="form3Example3" class="form-control"
+                                            <input type="email" name="email" id="" class="form-control"
                                                 class="form-control @error('email') {{ 'border-danger' }} @enderror "
                                                 required />
-                                            <label class="form-label" for="form3Example3">Email address</label>
+                                            <label class="form-label" for="">Email address</label>
                                         </div>
                                     </div>
                                     <div class="col-md-6 mb-4">
@@ -114,9 +114,9 @@
                                             <small class="text-danger">{{ $message }}</small>
                                             @enderror
                                             <input type="text" name="license_no" value="{{ old('license_no') }}"
-                                                id="form3Example3" class="form-control"
+                                                id="" class="form-control"
                                                 class="form-control @error('license_no') {{ 'border-danger' }} @enderror " />
-                                            <label class="form-label" for="form3Example3">License Number</label>
+                                            <label class="form-label" for="">License Number</label>
                                         </div>
                                     </div>
                                 </div>
@@ -129,7 +129,7 @@
                                     accept="image/*"
                                         onchange="loadFile(event)" id="imgInp" />
                                     <img class="mt-2" id="output" alt="">
-                                    <label class="form-label" for="form3Example3">Photo</label>
+                                    <label class="form-label" for="">Photo</label>
                                 </div>
                                 <div class="row">
 
