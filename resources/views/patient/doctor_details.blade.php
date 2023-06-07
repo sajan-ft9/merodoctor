@@ -2,9 +2,9 @@
 
 @section('content')
 <link href="http://nepalidatepicker.sajanmaharjan.com.np/nepali.datepicker/css/nepali.datepicker.v4.0.1.min.css"
-  rel="stylesheet" type="text/css" />
+    rel="stylesheet" type="text/css" />
 <script src="http://nepalidatepicker.sajanmaharjan.com.np/nepali.datepicker/js/nepali.datepicker.v4.0.1.min.js"
-  type="text/javascript"></script>
+    type="text/javascript"></script>
 
 <section class="layout_padding">
     <div class="container">
@@ -14,8 +14,7 @@
                     <div class="card mb-4 shadow">
                         <div class="card-body text-center">
                             <img src="{{ asset($doctor->image_path == "" ? '/images/client.jpg' : $doctor->image_path)
-                            }}"
-                            alt="avatar" class="img-fluid">
+                            }}" alt="avatar" class="img-fluid">
                             <h5 class="my-3">{{ $doctor->user->name }}</h5>
                             <p class=" mb-1">{{ $doctor->user->email }}</p>
                             <p class=" mb-4">{{ $doctor->department }}</p>
@@ -30,10 +29,19 @@
                         @csrf
                         <div class="row mb-2">
                             <h2>Appointment request</h2>
-                            <div class=" form-group">
-                                <label for="">Date</label>
-                                <input type="text" name="date_bs" id="nepali-datepicker" readonly class="form-control"
-                                    placeholder="Date in BS" required>
+                            <div class="col">
+                                <div class="form-group">
+                                    <label for="">Date (BS)</label>
+                                    <input type="text" name="date_bs" id="nepali-datepicker"  readonly
+                                        class="form-control" placeholder="Date in BS" required>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="form-group">
+                                    <label for="">Date (AD)</label>
+                                    <input id="english_date" type="date" name="date_ad" onclick="getDate()"  readonly
+                                        class="form-control" placeholder="Date in AD" required>
+                                </div>
                             </div>
                         </div>
                         <div class="row">
@@ -70,10 +78,28 @@
     </div>
 </section>
 <script type="text/javascript">
-  window.onload = function() {
-  var mainInput = document.getElementById("nepali-datepicker");
-  mainInput.nepaliDatePicker();
-console.log(NepaliFunctions.AD2BS({year: 2023, month: 6, day: 15}));
-};
+    window.onload = function() {
+      year=NepaliFunctions.GetCurrentBsYear();
+      month = NepaliFunctions.GetCurrentBsMonth();
+      day = NepaliFunctions.GetCurrentBsDay();
+      var currentdate = year+"-"+month+"-"+day
+      console.log(currentdate)
+      var mainInput = document.getElementById("nepali-datepicker");
+      mainInput.nepaliDatePicker({
+      disableBefore:currentdate,
+      disableDaysAfter: 3
+    });
+
+    
+  };
+</script>
+<script>
+    function getDate(){
+    var nepali = document.getElementById("nepali-datepicker").value;
+    converted = NepaliFunctions.BS2AD(nepali)
+    
+    var english = document.getElementById("english_date");
+    english.value=converted;
+  }
 </script>
 @endsection

@@ -6,9 +6,9 @@
 <script src="http://nepalidatepicker.sajanmaharjan.com.np/nepali.datepicker/js/nepali.datepicker.v4.0.1.min.js"
   type="text/javascript"></script>
 
- <section class="layout_padding" >
+<section class="layout_padding">
   <div class="container mb-5 p-4 rounded-lg">
-    
+
 
     <div class="shadow p-4 rounded-lg">
       <h2 class="text-white">Request an Appointment</h2>
@@ -27,9 +27,19 @@
       <form class="col-lg-6 text-white" action="{{ route('patient.make_appointment') }}" method="POST">
         @csrf
         <div class="row mb-2">
-          <div class=" form-group">
-            <label for="">Date</label>
-            <input type="text" name="date_bs" id="nepali-datepicker" readonly class="form-control" placeholder="Date in BS" required>
+          <div class="col">
+            <div class=" form-group">
+              <label for="">Date</label>
+              <input type="text" name="date_bs" id="nepali-datepicker" ndpYearCount=2 readonly class="form-control"
+                placeholder="Date in BS" required>
+            </div>
+          </div>
+          <div class="col">
+            <div class="form-group">
+              <label for="">Date (AD)</label>
+              <input id="english_date" type="date" name="date_ad" onclick="getDate()" readonly class="form-control"
+                placeholder="Date in AD" required>
+            </div>
           </div>
         </div>
         <div class="row">
@@ -53,7 +63,8 @@
         </div>
         <div class="col form-group mb-2" style="margin-left: -12px">
           <label for="">Problem Description</label>
-          <textarea name="problem_desc" class="form-control" id="" cols="30" rows="10">{{ old("problem_desc") }}</textarea>
+          <textarea name="problem_desc" class="form-control" id="" cols="30"
+            rows="10">{{ old("problem_desc") }}</textarea>
         </div>
 
         <button type="submit" class="btn btn-danger">Request Appointment</button>
@@ -63,9 +74,27 @@
 </section>
 <script type="text/javascript">
   window.onload = function() {
-  var mainInput = document.getElementById("nepali-datepicker");
-  mainInput.nepaliDatePicker();
-console.log(NepaliFunctions.AD2BS({year: 2023, month: 6, day: 15}));
+    year=NepaliFunctions.GetCurrentBsYear();
+    month = NepaliFunctions.GetCurrentBsMonth();
+    day = NepaliFunctions.GetCurrentBsDay();
+    var currentdate = year+"-"+month+"-"+day
+    console.log(currentdate)
+    var mainInput = document.getElementById("nepali-datepicker");
+    mainInput.nepaliDatePicker({
+    disableBefore:currentdate,
+    disableDaysAfter: 3
+  });
+
+  
 };
+</script>
+<script>
+  function getDate(){
+  var nepali = document.getElementById("nepali-datepicker").value;
+  converted = NepaliFunctions.BS2AD(nepali)
+
+  var english = document.getElementById("english_date");
+  english.value=converted;
+}
 </script>
 @endsection
