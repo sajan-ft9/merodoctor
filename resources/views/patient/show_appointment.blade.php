@@ -32,20 +32,21 @@
                     <td>{{ $item->problem_desc }}</td>
                     @if ($item->approved == 0)
                         <td><div class="btn btn-warning">Pending</div></td>
-                    @else
-                    <td><span class="text-success fs-4"> &#10003;</span></td>
+                        <td>
+                            <a href="{{ route('patient.edit_appointment', $item->id) }}" class="btn btn-outline-warning">Edit</a>
+                        </td>
+                        <td>
+                            <form action="{{ route('patient.delete_appointment', $item->id) }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" href="" class="btn btn-danger">Delete</button>
+    
+                            </form>
+                        </td>
+                        @else
+                    <td colspan="3"><span class="text-success fs-4"> &#10003;</span></td>
                     @endif
-                    <td>
-                        <a href="{{ route('patient.edit_appointment', $item->id) }}" class="btn btn-outline-warning">Edit</a>
-                    </td>
-                    <td>
-                        <form action="{{ route('patient.delete_appointment', $item->id) }}" method="POST">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" href="" class="btn btn-danger">Delete</button>
-
-                        </form>
-                    </td>
+                    
                 </tr>
 
                 @endforeach
