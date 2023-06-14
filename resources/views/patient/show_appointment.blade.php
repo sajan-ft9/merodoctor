@@ -2,7 +2,7 @@
 
 
 @section('content')
-<section class="layout_padding" style="height:80vh">
+<section class="layout_padding">
     <div class="container">
         <div class="heading_container heading_center mb-2">
             <h2 class="text-white">

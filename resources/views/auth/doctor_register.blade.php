@@ -89,7 +89,7 @@
                                             @error('department')
                                             <small class="text-danger">{{ $message }}</small>
                                             @enderror
-                                            <input type="text" name="department" id="" class="form-control"
+                                            <input type="text" name="department" id="" value="{{ old('department') }}"
                                                 class="form-control @error('department') {{ 'border-danger' }} @enderror ">
                                                 <label class="form-label" for="">Specialty
                                             Department</label>
@@ -102,7 +102,7 @@
                                             @error('email')
                                             <small class="text-danger">{{ $message }}</small>
                                             @enderror
-                                            <input type="email" name="email" id="" class="form-control"
+                                            <input type="email" name="email" value="{{ old('email') }}"
                                                 class="form-control @error('email') {{ 'border-danger' }} @enderror "
                                                 required />
                                             <label class="form-label" for="">Email address</label>
@@ -114,7 +114,6 @@
                                             <small class="text-danger">{{ $message }}</small>
                                             @enderror
                                             <input type="text" name="license_no" value="{{ old('license_no') }}"
-                                                id="" class="form-control"
                                                 class="form-control @error('license_no') {{ 'border-danger' }} @enderror " />
                                             <label class="form-label" for="">License Number</label>
                                         </div>
@@ -124,8 +123,8 @@
                                     @error('image_path')
                                     <small class="text-danger">{{ $message }}</small>
                                     @enderror
-                                    <input type="file" name="image_path" id="image" class="form-control"
-                                    class="form-control @error('iamge_path') {{ 'border-danger' }} @enderror "
+                                    <input type="file" name="image_path" id="image" 
+                                    class="form-control @error('image_path') {{ 'border-danger' }} @enderror "
                                     accept="image/*"
                                         onchange="loadFile(event)" id="imgInp" />
                                     <img class="mt-2" id="output" alt="">

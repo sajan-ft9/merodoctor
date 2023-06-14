@@ -41,7 +41,7 @@
                         </form>
                     </td>
                     <td>
-                        <button class="btn btn-danger">Pending</button>
+                        <button class="btn btn-danger">Not checked</button>
                     </td>
                     @else
                     <td>
@@ -56,7 +56,7 @@
                         <form action="{{ route('doctor.toggle_status', $item->id) }}" method="post">
                             @csrf
                             @method('patch')
-                            <button class="btn btn-danger">Pending</button>
+                            <button class="btn btn-danger">Not checked</button>
                         </form>
                     </td>
                     @endif

@@ -27,7 +27,7 @@ class DoctorRequest extends FormRequest
             'name'  => "required|string|max:50",
             'email'  => "required|email|unique:users,email",
             'department'  => "required|string|max:50",
-            'license_no'  => "required|string|max:50",
+            'license_no'  => "required|string|max:50|unique:doctors,license_no",
             'image_path' => ['image', 'mimes:png,jpg,jpeg', 'max:4096'],
         ];
     }

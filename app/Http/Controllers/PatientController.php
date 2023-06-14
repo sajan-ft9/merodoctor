@@ -66,6 +66,7 @@ class PatientController extends Controller
     {
         $fields = $request->validate([
             'date_bs' => "required|string",
+            'date_ad' => "required|string",
             'doctor_id' => "required|numeric|exists:doctors,doctor_id",
             "time_slot" => "required|string",
             "problem_desc" => "required|string",

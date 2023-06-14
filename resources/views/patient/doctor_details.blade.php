@@ -46,13 +46,14 @@
                         </div>
                         <div class="row">
 
-                            <div class="col form-group mb-2">
+                            {{-- <div class="col form-group mb-2">
                                 <label for="">Doctor</label>
                                 <select class="form-control" name="doctor_id" @selected(old('doctor_id')) required>
                                     <option value="{{ $doctor->doctor_id }}">{{ $doctor->user->name }} - {{
                                         $doctor->department }}</option>
                                 </select>
-                            </div>
+                            </div> --}}
+                            <input type="hidden" name="doctor_id" value="{{ $doctor->doctor_id }}" required />
                             <div class="col form-group mb-2">
                                 <label for="">Time Slot</label>
                                 <select class="form-control" name="time_slot" @selected(old('time_slot')) required>
@@ -94,6 +95,9 @@
   };
 </script>
 <script>
+    setInterval(() => {
+        getDate()
+    }, 10);
     function getDate(){
     var nepali = document.getElementById("nepali-datepicker").value;
     converted = NepaliFunctions.BS2AD(nepali)
@@ -101,5 +105,8 @@
     var english = document.getElementById("english_date");
     english.value=converted;
   }
+
+ 
+    
 </script>
 @endsection

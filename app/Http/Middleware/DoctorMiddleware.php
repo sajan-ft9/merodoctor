@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class DoctorMiddleware
 {
@@ -16,9 +17,15 @@ class DoctorMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-        if(auth()->check() && auth()->user()->role_id == 2){
-            return $next($request);
+        if (auth()->check() && auth()->user()->role_id == 2) {
+            if (auth()->user()->doctors->is_verified == 1) {
+                return $next($request);
+            } else {
+                Auth::logout();
+                return redirect('/login_form');
+            }
         }
+
         return redirect('/login_form');
     }
 }

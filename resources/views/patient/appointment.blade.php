@@ -89,12 +89,16 @@
 };
 </script>
 <script>
-  function getDate(){
-  var nepali = document.getElementById("nepali-datepicker").value;
-  converted = NepaliFunctions.BS2AD(nepali)
+    setInterval(() => {
+        getDate()
+    }, 10);
+    function getDate(){
+    var nepali = document.getElementById("nepali-datepicker").value;
+    converted = NepaliFunctions.BS2AD(nepali)
+    
+    var english = document.getElementById("english_date");
+    english.value=converted;
+  }
 
-  var english = document.getElementById("english_date");
-  english.value=converted;
-}
 </script>
 @endsection
